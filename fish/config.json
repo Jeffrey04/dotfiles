@@ -1,0 +1,11 @@
+{
+    "meta": {
+        "depends_on": [],
+        "installer": "install.py"
+    },
+    "config": {
+        "plugins": [
+            "edc/bass"
+        ]
+    }
+}
