@@ -4,6 +4,9 @@ cp /etc/skel/.bashrc $HOME/.bashrc
 
 cat >> $HOME/.bashrc << EOL
 
+# install rust utilities
+# FIXME
+
 #
 # Programing environments
 #

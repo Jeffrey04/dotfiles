@@ -6,6 +6,19 @@ import subprocess
 with open("config.json") as f:
     config = json.load(f)
 
+os.makedirs(f"{os.environ['HOME']}/Applications", exist_ok=True)
+
+subprocess.call(
+    [
+        "curl",
+        "-L",
+        "https://github.com/neovim/neovim/releases/latest/download/nvim.appimage",
+        "-o",
+        f"{os.environ['HOME']}/Applications/nvim.appimage",
+    ]
+)
+subprocess.call(f"chmod +x {os.environ['HOME']}/Applications/nvim.appimage", shell=True)
+
 os.makedirs(f"{os.environ['HOME']}/.config/nvim", exist_ok=True)
 os.makedirs(f"{os.environ['HOME']}/.local/share/nvim/site/pack", exist_ok=True)
 subprocess.call(
