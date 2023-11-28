@@ -1,0 +1,26 @@
+add_newline = false
+
+[character]
+success_symbol = '[\[I\]](bold bg:green fg:black) '
+error_symbol = '[\[▲\]](bold bg:red fg:black) '
+vicmd_symbol = '[\[N\]](bold bg:red fg:black) '
+
+[cmd_duration]
+disabled = true
+
+[hostname]
+format = "[$hostname]($style):"
+ssh_only = false
+
+[line_break]
+disabled = true
+
+[username]
+format = "[$user]($style)@"
+show_always = true
+
+[custom.direnv]
+ignore_timeout = true
+format = "[\\[direnv\\]]($style) "
+style = "fg:yellow dimmed"
+when = "env | grep -E '^DIRENV_DIFF='"
