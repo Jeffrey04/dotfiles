@@ -1,8 +1,6 @@
 {
     "meta": {
-        "depends": [
-            "base"
-        ],
+        "depends_on": [],
         "installer": "install.py"
     },
     "configuration": {

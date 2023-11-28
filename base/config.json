@@ -1,0 +1,5 @@
+{
+    "meta": {
+        "depends_on": ["python", "ruby", "nodejs", "fish"]
+    }
+}
