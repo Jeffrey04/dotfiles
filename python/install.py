@@ -12,4 +12,5 @@ with open("config.json") as f:
 subprocess.call(["pyenv", "global", "system", "system"])
 subprocess.call(["pyenv", "install", "-f", config["configuration"]["install_version"]])
 
-subprocess.call(["pipx", "install", "poetry"])
+subprocess.call(["sudo", "apt", "install", "-y", "pipx"])
+subprocess.call(["pipx", "install", "--force", "poetry"])

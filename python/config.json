@@ -4,6 +4,6 @@
         "installer": "install.py"
     },
     "configuration": {
-        "install_version": "3.12.0"
+        "install_version": "3.12.3"
     }
 }
