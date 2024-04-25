@@ -3,6 +3,7 @@ set -Ux VISUAL vim
 
 # pyenv
 set -Ux PYENV_ROOT $HOME/.pyenv
+set -U PYTHON_CONFIGURE_OPTS "--enable-loadable-sqlite-extensions"
 set -Ua fish_user_paths $PYENV_ROOT/bin
 pyenv init - | source
 
