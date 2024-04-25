@@ -42,16 +42,16 @@ subprocess.call("poetry init --name=nvim --python=^3.12 --no-interaction", shell
 subprocess.call("poetry config --local virtualenvs.in-project true", shell=True)
 subprocess.call("poetry add pynvim", shell=True)
 subprocess.call("echo v20.12.2 > .nvmrc", shell=True)
-subprocess.call("nvm use", shell=True)
-subprocess.call("corepack enable", shell=True)
-subprocess.call("yarn install", shell=True)
-subprocess.call("yarn add neovim", shell=True)
-subprocess.call("nvm exec yarn install", shell=True)
+subprocess.call(
+    "nvm use && corepack enable && yarn install && yarn add neovim && yarn install",
+    shell=True,
+)
 subprocess.call("rbenv local 3.2.2", shell=True)
 subprocess.call("bundle init", shell=True)
-subprocess.call("bundle add neovim", shell=True)
+subprocess.call("bundle add --path vendor/bundle neovim", shell=True)
 subprocess.call(
-    "bundle install && bundle binstubs --force --standalone neovim", shell=True
+    "bundle install --path vendor/bundle && bundle binstubs --force --standalone neovim",
+    shell=True,
 )
 
 os.chdir(f"{os.environ['HOME']}/.local/share/nvim/site/pack")
