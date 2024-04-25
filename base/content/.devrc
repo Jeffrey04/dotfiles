@@ -31,7 +31,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # ruby
-eval "$(~/.rbenv/bin/rbenv init - bash)"
+if [ "$(uname)" == "Darwin" ]; then
+    eval "$(/usr/local/bin/rbenv init - bash)"
+
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    eval "$(~/.rbenv/bin/rbenv init - bash)"
+fi
 
 # direnv
 eval "$(direnv hook bash)"
@@ -39,6 +44,7 @@ eval "$(direnv hook bash)"
 # zoxide
 eval "$(zoxide init bash)"
 
+# golang
 if [ "$(uname)" == "Darwin" ]; then
     # Homebrew installation of Go Lang
     echo "Darwin"

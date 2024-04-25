@@ -28,7 +28,12 @@ pyenv init - | source
 set -Ua fish_user_paths $HOME/.cargo/bin
 
 # ruby
-status --is-interactive; and ~/.rbenv/bin/rbenv init - fish | source
+switch (uname)
+    case Linux
+        status --is-interactive; and ~/.rbenv/bin/rbenv init - fish | source
+    case Darwin
+        status --is-interactive; and /usr/local/bin/rbenv init - fish | source
+end
 
 # direnv
 direnv hook fish | source
