@@ -231,9 +231,9 @@ autocmd CompleteDone * pclose " To close preview window of deoplete automagicall
 "
 if has("macunix")
     let g:loaded_perl_provider = 0
-    let g:python3_host_prog = '/usr/local/bin/python3'
-    let g:python_host_prog = '/usr/local/bin/python2'
-    let g:ruby_host_prog = '/usr/local/opt/ruby/bin/ruby'
+    let g:python3_host_prog = '/User/jeffrey04/.config/nvim/.venv/bin/python'
+    let g:ruby_host_prog = '/User/jeffrey04/.config/nvim/bin/neovim-ruby-host'
+    let g:node_host_prog = '/User/jeffrey04/.config/nvim/node_modules/neovim/bin/cli.js'
 else
     let g:loaded_perl_provider = 0
     let g:python3_host_prog = '/home/jeffrey04/.config/nvim/.venv/bin/python'
