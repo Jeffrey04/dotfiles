@@ -6,10 +6,11 @@ import subprocess
 with open("config.json") as f:
     config = json.load(f)
 
+subprocess.call("curl https://pyenv.run | bash", shell=True)
+
 # FIXME install python2 proxy and pipx
 # subprocess.call(["sudo", "apt", "install", "-y", "python-is-python3", "pipx"])
 
-# FIXME install pyenv
 subprocess.call(["pyenv", "global", "system", "system"])
 subprocess.call(["pyenv", "install", "-f", config["configuration"]["install_version"]])
 
