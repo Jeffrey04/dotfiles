@@ -6,7 +6,6 @@ import subprocess
 with open("config.json") as f:
     config = json.load(f)
 
-subprocess.call("curl https://pyenv.run | bash", shell=True)
 if platform.system() == "Linux":
     subprocess.call(
         "sudo apt update; sudo apt install -y build-essential libssl-dev zlib1g-dev "
@@ -16,6 +15,8 @@ if platform.system() == "Linux":
 
 elif platform.system() == "macOS":
     subprocess.call("brew install --force openssl readline sqlite3 xz zlib tcl-tk")
+
+subprocess.call("curl https://pyenv.run | bash", shell=True)
 
 subprocess.call(["pyenv", "global", "system", "system"])
 subprocess.call(["pyenv", "install", "-f", config["configuration"]["install_version"]])
