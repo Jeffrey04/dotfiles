@@ -57,6 +57,13 @@ alias cd=z
 alias dig=$HOME/.cargo/bin/dog
 alias http=$HOME/.cargo/bin/xh
 alias ls=$HOME/.cargo/bin/lsd
-alias nvim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
-alias vim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
-alias code='env APPIMAGELAUNCHER_DISABLE=1 $HOME/.local/bin/code'
+
+if [ "$(uname)" == "Darwin" ]; then
+    # Homebrew installation of Go Lang
+    alias vim=nvim
+
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    alias nvim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
+    alias vim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
+    alias code='env APPIMAGELAUNCHER_DISABLE=1 $HOME/.local/bin/code'
+fi

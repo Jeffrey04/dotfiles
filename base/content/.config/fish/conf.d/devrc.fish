@@ -53,6 +53,12 @@ alias cd=z
 alias dig=$HOME/.cargo/bin/dog
 alias http=$HOME/.cargo/bin/xh
 alias ls=$HOME/.cargo/bin/lsd
-alias nvim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
-alias vim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
-alias code='env APPIMAGELAUNCHER_DISABLE=1 $HOME/.local/bin/code'
+
+switch (uname)
+    case Linux
+        alias nvim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
+        alias vim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
+        alias code='env APPIMAGELAUNCHER_DISABLE=1 $HOME/.local/bin/code'
+    case Darwin
+        alias vim=nvim
+end
