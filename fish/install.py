@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import json
 import os
+import platform
 import subprocess
 
 with open("config.json") as f:
