@@ -13,7 +13,7 @@ if platform.system() == "Linux":
         "libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev"
     )
 
-elif platform.system() == "macOS":
+elif platform.system() == "Darwin":
     subprocess.call("brew install --force openssl readline sqlite3 xz zlib tcl-tk")
 
 subprocess.call("curl https://pyenv.run | bash", shell=True)
@@ -24,7 +24,7 @@ subprocess.call(["pyenv", "install", "-f", config["configuration"]["install_vers
 if platform.system() == "Linux":
     subprocess.call(["sudo", "apt", "install", "-y", "pipx"])
 
-elif platform.system() == "macOS":
+elif platform.system() == "Darwin":
     subprocess.call(["brew", "install", "--force", "pipx"])
 
 subprocess.call(["pipx", "install", "--force", "poetry"])
