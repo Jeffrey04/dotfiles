@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# resetting profile and bashrc
 if [ -f /etc/skel/.bashrc ]; then
     cp /etc/skel/.bashrc $HOME/.bashrc
 else
@@ -22,11 +23,18 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 EOL
-    touch $HOME/.bashrc
+    echo > $HOME/.bashrc
 fi
 
-# install rust utilities
-# FIXME
+if [ "$(uname)" == "Darwin" ]; then
+    # Homebrew
+    brew install --force direnv
+
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # Ubuntu make installation of Go Lang
+    sudo apt install -y direnv
+
+fi
 
 cat >> $HOME/.bashrc << EOL
 
