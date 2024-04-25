@@ -45,17 +45,13 @@ eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
 
 # golang
-if [ "$(uname)" == "Darwin" ]; then
-    # Homebrew installation of Go Lang
-    echo "Darwin"
-
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Ubuntu make installation of Go Lang
     PATH=/home/jeffrey04/.local/share/umake/go/go-lang/bin:$PATH
     export GOROOT=/home/jeffrey04/.local/share/umake/go/go-lang
+    export GOPATH=$HOME/.go
+    export PATH=$PATH:$(go env GOPATH)/bin
 fi
-export GOPATH=$HOME/.go
-export PATH=$PATH:$(go env GOPATH)/bin
 
 # aliases
 alias cat=$HOME/.cargo/bin/bat

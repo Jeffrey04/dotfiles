@@ -46,11 +46,9 @@ switch (uname)
     case Linux
         set -U GOROOT /home/jeffrey04/.local/share/umake/go/go-lang
         set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/go/go-lang/bin
-    case Darwin
-        echo Hi Hexley!
+        set -U GOPATH $HOME/.go
+        set -Ua fish_user_paths (go env GOPATH)/bin
 end
-set -U GOPATH $HOME/.go
-set -Ua fish_user_paths (go env GOPATH)/bin
 
 # aliases
 alias cat=$HOME/.cargo/bin/bat
