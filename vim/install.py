@@ -29,8 +29,9 @@ subprocess.call(
 cwd = os.getcwd()
 
 os.chdir(f"{os.environ['HOME']}/.config/nvim")
-subprocess.call("pyenv local 3.11.6 3.11.6", shell=True)
-subprocess.call("poetry init --name=nvim --python=^3.11 --no-interaction", shell=True)
+# FIXME get python version from python's config.json
+subprocess.call("pyenv local 3.12.3 3.12.3", shell=True)
+subprocess.call("poetry init --name=nvim --python=^3.12 --no-interaction", shell=True)
 subprocess.call("poetry config --local virtualenvs.in-project true", shell=True)
 subprocess.call("poetry add pynvim", shell=True)
 subprocess.call("echo v20.10.0 > .nvimrc", shell=True)
