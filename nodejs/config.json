@@ -1,0 +1,11 @@
+{
+    "meta": {
+        "depends_on": [
+            "python"
+        ],
+        "installer": "install.py"
+    },
+    "configuration": {
+        "install_version": "3.12.3"
+    }
+}
