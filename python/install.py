@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import json
+import platform
 import subprocess
 
 with open("config.json") as f:
@@ -12,5 +13,10 @@ with open("config.json") as f:
 subprocess.call(["pyenv", "global", "system", "system"])
 subprocess.call(["pyenv", "install", "-f", config["configuration"]["install_version"]])
 
-subprocess.call(["sudo", "apt", "install", "-y", "pipx"])
+if platform.system() == "Linux":
+    subprocess.call(["sudo", "apt", "install", "-y", "pipx"])
+
+elif platform.system() == "macOS":
+    subprocess.call(["brew", "install", "--force", "pipx"])
+
 subprocess.call(["pipx", "install", "--force", "poetry"])

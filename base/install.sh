@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 if [ -f /etc/skel/.bashrc ]; then
     cp /etc/skel/.bashrc $HOME/.bashrc

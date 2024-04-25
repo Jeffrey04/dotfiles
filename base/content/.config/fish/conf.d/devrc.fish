@@ -21,13 +21,25 @@ direnv hook fish | source
 zoxide init fish | source
 
 # Golang
-set -U GOROOT /home/jeffrey04/.local/share/umake/go/go-lang
+switch (uname)
+    case Linux
+        set -U GOROOT /home/jeffrey04/.local/share/umake/go/go-lang
+        set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/go/go-lang/bin
+    case Darwin
+        echo Hi Hexley!
+end
 set -U GOPATH $HOME/.go
-set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/go/go-lang/bin
 set -Ua fish_user_paths (go env GOPATH)/bin
 
-# umake
-set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/bin
+# tools installer
+switch (uname)
+    case Linux
+        # umake
+        set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/bin
+
+    case Darwin
+        echo Hi Hexley!
+end
 
 # pyenv
 set -Ux PYENV_ROOT $HOME/.pyenv
