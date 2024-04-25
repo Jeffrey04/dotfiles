@@ -4,7 +4,7 @@
 if [ -f /etc/skel/.bashrc ]; then
     cp /etc/skel/.bashrc $HOME/.bashrc
 else
-    cat > $HOME/.profile <<EOL
+    cat > $HOME/.profile << 'EOF'
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -22,7 +22,7 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-EOL
+EOF
     echo > $HOME/.bashrc
 fi
 
@@ -36,7 +36,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
 fi
 
-cat >> $HOME/.bashrc << EOL
+cat >> $HOME/.bashrc << 'EOF'
 
 #
 # Programing environments
@@ -44,6 +44,6 @@ cat >> $HOME/.bashrc << EOL
 if [ -f "$HOME/.devrc" ]; then
     . "$HOME/.devrc"
 fi
-EOL
+EOF
 
 stow -R --target=$HOME --verbose=3 content
