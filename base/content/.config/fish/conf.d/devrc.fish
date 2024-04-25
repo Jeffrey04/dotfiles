@@ -1,6 +1,11 @@
 set -Ux EDITOR vim
 set -Ux VISUAL vim
 
+# pyenv
+set -Ux PYENV_ROOT $HOME/.pyenv
+set -Ua fish_user_paths $PYENV_ROOT/bin
+pyenv init - | source
+
 # starship prompt
 starship init fish | source
 
@@ -40,11 +45,6 @@ switch (uname)
     case Darwin
         /usr/local/bin/brew shellenv | source
 end
-
-# pyenv
-set -Ux PYENV_ROOT $HOME/.pyenv
-set -Ua fish_user_paths $PYENV_ROOT/bin
-pyenv init - | source
 
 # aliases
 alias cat=$HOME/.cargo/bin/bat
