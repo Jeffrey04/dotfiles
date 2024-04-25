@@ -1,11 +1,15 @@
 #!/usr/bin/env sh
 
-cp /etc/skel/.bashrc $HOME/.bashrc
-
-cat >> $HOME/.bashrc << EOL
+if [ -f /etc/skel/.bashrc ]; then
+    cp /etc/skel/.bashrc $HOME/.bashrc
+else
+    touch $HOME/.bashrc
+fi
 
 # install rust utilities
 # FIXME
+
+cat >> $HOME/.bashrc << EOL
 
 #
 # Programing environments
