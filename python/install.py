@@ -7,9 +7,15 @@ with open("config.json") as f:
     config = json.load(f)
 
 subprocess.call("curl https://pyenv.run | bash", shell=True)
+if platform.system() == "Linux":
+    subprocess.call(
+        "sudo apt update; sudo apt install -y build-essential libssl-dev zlib1g-dev "
+        "libbz2-dev libreadline-dev libsqlite3-dev curl "
+        "libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev"
+    )
 
-# FIXME install python2 proxy and pipx
-# subprocess.call(["sudo", "apt", "install", "-y", "python-is-python3", "pipx"])
+elif platform.system() == "macOS":
+    subprocess.call("brew install --force openssl readline sqlite3 xz zlib tcl-tk")
 
 subprocess.call(["pyenv", "global", "system", "system"])
 subprocess.call(["pyenv", "install", "-f", config["configuration"]["install_version"]])
