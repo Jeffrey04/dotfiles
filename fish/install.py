@@ -6,6 +6,13 @@ import subprocess
 with open("config.json") as f:
     config = json.load(f)
 
+
+if platform.system() == "Linux":
+    subprocess.call("sudo apt fish", shell=True)
+
+elif platform.system() == "Darwin":
+    subprocess.call("brew install --force fish")
+
 subprocess.call(
     "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher",
     shell=True,
