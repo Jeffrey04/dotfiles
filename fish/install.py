@@ -20,11 +20,15 @@ subprocess.call(
     executable="/usr/bin/fish",
 )
 
+fish_path = "/usr/bin/fish"
+if platform.system() == "Darwin":
+    fish_path = "/usr/local/bin/fish"
+
 for plugin in config["config"]["plugins"]:
     subprocess.call(
         f"fisher install {plugin}",
         shell=True,
-        executable="/usr/bin/fish",
+        executable=fish_path,
     )
 
 subprocess.call(
