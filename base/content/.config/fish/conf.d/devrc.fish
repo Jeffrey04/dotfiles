@@ -11,18 +11,18 @@ switch (uname)
         /usr/local/bin/brew shellenv | source
 end
 
-# pyenv
-set -Ux PYENV_ROOT $HOME/.pyenv
-set -U PYTHON_CONFIGURE_OPTS "--enable-loadable-sqlite-extensions"
-set -Ua fish_user_paths $PYENV_ROOT/bin
-pyenv init - | source
-
 # starship prompt
 starship init fish | source
 
 #
 # programming environment
 #
+
+# pyenv
+set -Ux PYENV_ROOT $HOME/.pyenv
+set -U PYTHON_CONFIGURE_OPTS "--enable-loadable-sqlite-extensions"
+set -Ua fish_user_paths $PYENV_ROOT/bin
+pyenv init - | source
 
 # rust
 set -Ua fish_user_paths $HOME/.cargo/bin
