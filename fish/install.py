@@ -14,15 +14,15 @@ if platform.system() == "Linux":
 elif platform.system() == "Darwin":
     subprocess.call("brew install --force fish", shell=True)
 
-subprocess.call(
-    "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher",
-    shell=True,
-    executable="/usr/bin/fish",
-)
-
 fish_path = "/usr/bin/fish"
 if platform.system() == "Darwin":
     fish_path = "/usr/local/bin/fish"
+
+subprocess.call(
+    "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher",
+    shell=True,
+    executable=fish_path,
+)
 
 for plugin in config["config"]["plugins"]:
     subprocess.call(
