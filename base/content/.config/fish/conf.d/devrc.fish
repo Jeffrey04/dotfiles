@@ -1,6 +1,16 @@
 set -Ux EDITOR vim
 set -Ux VISUAL vim
 
+# tools installer
+switch (uname)
+    case Linux
+        # umake
+        set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/bin
+
+    case Darwin
+        /usr/local/bin/brew shellenv | source
+end
+
 # pyenv
 set -Ux PYENV_ROOT $HOME/.pyenv
 set -U PYTHON_CONFIGURE_OPTS "--enable-loadable-sqlite-extensions"
@@ -36,16 +46,6 @@ switch (uname)
 end
 set -U GOPATH $HOME/.go
 set -Ua fish_user_paths (go env GOPATH)/bin
-
-# tools installer
-switch (uname)
-    case Linux
-        # umake
-        set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/bin
-
-    case Darwin
-        /usr/local/bin/brew shellenv | source
-end
 
 # aliases
 alias cat=$HOME/.cargo/bin/bat

@@ -1,6 +1,17 @@
 export EDITOR=vim
 export VISUAL=vim
 
+# tools installer
+if [ "$(uname)" == "Darwin" ]; then
+    # Homebrew
+    eval "$(/usr/local/bin/brew shellenv)"
+
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # Ubuntu make installation of Go Lang
+    PATH=/home/jeffrey04/.local/share/umake/go/go-lang/bin:$PATH
+    export GOROOT=/home/jeffrey04/.local/share/umake/go/go-lang
+fi
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PYTHON_CONFIGURE_OPTS="--enable-loadable-sqlite-extensions"
@@ -35,17 +46,6 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 fi
 export GOPATH=$HOME/.go
 export PATH=$PATH:$(go env GOPATH)/bin
-
-# tools installer
-if [ "$(uname)" == "Darwin" ]; then
-    # Homebrew
-    eval "$(/usr/local/bin/brew shellenv)"
-
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    # Ubuntu make installation of Go Lang
-    PATH=/home/jeffrey04/.local/share/umake/go/go-lang/bin:$PATH
-    export GOROOT=/home/jeffrey04/.local/share/umake/go/go-lang
-fi
 
 # aliases
 alias cat=$HOME/.cargo/bin/bat
