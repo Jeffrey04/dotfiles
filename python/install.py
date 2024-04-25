@@ -25,9 +25,9 @@ subprocess.call(["pyenv", "global", "system", "system"])
 subprocess.call(["pyenv", "install", "-f", config["configuration"]["install_version"]])
 
 if platform.system() == "Linux":
-    subprocess.call(["sudo", "apt", "install", "-y", "pipx"], shell=True)
+    subprocess.call("sudo apt install -y pipx", shell=True)
 
 elif platform.system() == "Darwin":
-    subprocess.call(["brew", "install", "--force", "pipx"], shell=True)
+    subprocess.call("brew install --force pipx", shell=True)
 
 subprocess.call(["pipx", "install", "--force", "poetry"])
