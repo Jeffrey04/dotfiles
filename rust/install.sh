@@ -2,4 +2,4 @@
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install --git https://github.com/ogham/dog dog
-cargo install bat xh lsd zoxide
+cargo install bat xh lsd zoxide starship
