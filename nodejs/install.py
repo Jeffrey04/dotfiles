@@ -11,9 +11,10 @@ subprocess.call(
     f"curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v{config['configuration']['nvm_version']}/install.sh | bash",
     shell=True,
 )
+
 proc = subprocess.Popen(
     [
-        "/usr/bin/bash",
+        "bash",
         "-i",
         "-c",
         f"nvm install {config['configuration']['install_version']}",
