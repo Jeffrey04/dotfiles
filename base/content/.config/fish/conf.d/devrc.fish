@@ -38,7 +38,7 @@ switch (uname)
         set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/bin
 
     case Darwin
-        echo Hi Hexley!
+        /usr/local/bin/brew shellenv | source
 end
 
 # pyenv
