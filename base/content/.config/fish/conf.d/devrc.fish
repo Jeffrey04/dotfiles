@@ -24,6 +24,9 @@ set -U PYTHON_CONFIGURE_OPTS "--enable-loadable-sqlite-extensions"
 set -Ua fish_user_paths $PYENV_ROOT/bin
 pyenv init - | source
 
+# python
+set -U PYTHONBREAKPOINT ipdb.set_trace
+
 # rust
 set -Ua fish_user_paths $HOME/.cargo/bin
 
