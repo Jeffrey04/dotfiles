@@ -1,15 +1,14 @@
-export EDITOR=vim
-export VISUAL=vim
-
-# tools installer
+#
+# package manager setup
+#
 if [ "$(uname)" == "Darwin" ]; then
     # Homebrew
-    eval "$(/usr/local/bin/brew shellenv)"
+    if [ -f /usr/local/bin/brew ]; then
+        eval "$(/usr/local/bin/brew shellenv)"
+    fi
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    # Ubuntu make installation of Go Lang
-    PATH=/home/jeffrey04/.local/share/umake/go/go-lang/bin:$PATH
-    export GOROOT=/home/jeffrey04/.local/share/umake/go/go-lang
+    export PATH=/home/jeffrey04/.local/share/umake/bin:$PATH
 fi
 
 #
@@ -17,35 +16,39 @@ fi
 #
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PYTHON_CONFIGURE_OPTS="--enable-loadable-sqlite-extensions"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if [ -f $HOME/.pyenv/bin/pyenv ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PYTHON_CONFIGURE_OPTS="--enable-loadable-sqlite-extensions"
+    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
 
 # python
 export PYTHONBREAKPOINT=ipdb.set_trace
 
 # rust
-. "$HOME/.cargo/env"
+if [ -f $HOME/.cargo/bin/cargo ]; then
+    . "$HOME/.cargo/env"
+fi
 
 # node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -f $HOME/.local/bin/nvm ]; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
 
 # ruby
 if [ "$(uname)" == "Darwin" ]; then
-    eval "$(/usr/local/bin/rbenv init - bash)"
+    if [ -f /usr/local/bin/rbenv ]; then
+        eval "$(/usr/local/bin/rbenv init - bash)"
+    fi
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    eval "$(~/.rbenv/bin/rbenv init - bash)"
+    if [ -f $HOME/.rbenv/bin/rbenv ]; then
+        eval "$($HOME/.rbenv/bin/rbenv init - bash)"
+    fi
 fi
-
-# direnv
-eval "$(direnv hook bash)"
-
-# zoxide
-eval "$(zoxide init bash)"
 
 # golang
 if [ "$(uname)" == "Darwin" ]; then
@@ -59,19 +62,45 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     export PATH=$PATH:$(go env GOPATH)/bin
 fi
 
-# aliases
-alias cat=$HOME/.cargo/bin/bat
-alias cd=z
-alias dig=$HOME/.cargo/bin/dog
-alias http=$HOME/.cargo/bin/xh
-alias ls=$HOME/.cargo/bin/lsd
+#
+# environment setup
+#
 
+# direnv
+if command -v direnv &>/dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
+# zoxide
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init bash)"
+    alias cd=z
+fi
+
+# aliases for rust applications
+if [ -f $HOME/.cargo/bin/cargo ]; then
+    alias cat=$HOME/.cargo/bin/bat
+    alias dig=$HOME/.cargo/bin/dog
+    alias http=$HOME/.cargo/bin/xh
+    alias ls=$HOME/.cargo/bin/lsd
+fi
+
+# editor setup
 if [ "$(uname)" == "Darwin" ]; then
-    # Homebrew installation of Go Lang
     alias vim=nvim
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    alias nvim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
-    alias vim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
-    alias code='env APPIMAGELAUNCHER_DISABLE=1 $HOME/.local/bin/code'
+    if [ -f $HOME/Applications/nvim.appimage ]; then
+        alias nvim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
+        alias vim='env APPIMAGELAUNCHER_DISABLE=1 $HOME/Applications/nvim.appimage'
+    fi
+
+    if [ -f $HOME/.local/bin/code ]; then
+        alias code='env APPIMAGELAUNCHER_DISABLE=1 $HOME/.local/bin/code'
+    fi
+fi
+
+if command -v vim &>/dev/null; then
+    export EDITOR=vim
+    export VISUAL=vim
 fi

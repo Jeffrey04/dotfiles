@@ -3,6 +3,7 @@
 # resetting profile and bashrc
 if [ -f /etc/skel/.bashrc ]; then
     cp /etc/skel/.bashrc $HOME/.bashrc
+    cp /etc/skel/.profile $HOME/.profile
 else
     cat > $HOME/.profile << 'EOF'
 # if running bash
