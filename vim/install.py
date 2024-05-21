@@ -49,7 +49,7 @@ subprocess.call(
 subprocess.call("rbenv local 3.2.2", shell=True)
 subprocess.call("mkdir -p vendor/bundle", shell=True)
 subprocess.call("bundle init", shell=True)
-subprocess.call("bundle config set --local path 'vendor/bundle", shell=True)
+subprocess.call("bundle config set --local path 'vendor/bundle'", shell=True)
 subprocess.call("bundle add neovim", shell=True)
 subprocess.call(
     "bundle install && bundle binstubs --force --standalone neovim",
