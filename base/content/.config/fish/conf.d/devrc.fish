@@ -91,9 +91,9 @@ switch (uname)
         alias vim=nvim
 end
 
-if functions -q vim
-    set -Ux EDITOR vim
-    set -Ux VISUAL vim
+if functions -q nvim
+    set -Ux EDITOR nvim
+    set -Ux VISUAL nvim
 end
 
 # starship prompt

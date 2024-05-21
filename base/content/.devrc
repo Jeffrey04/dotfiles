@@ -100,7 +100,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     fi
 fi
 
-if command -v vim &>/dev/null; then
-    export EDITOR=vim
-    export VISUAL=vim
+if command -v nvim &>/dev/null; then
+    export EDITOR=nvim
+    export VISUAL=nvim
 fi
