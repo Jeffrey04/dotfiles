@@ -1,5 +1,8 @@
 {
     "meta": {
-        "depends_on": ["rust"]
+        "depends_on": [
+            "rust"
+        ],
+        "installer": "bash install.sh"
     }
 }

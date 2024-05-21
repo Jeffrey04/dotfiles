@@ -1,7 +1,8 @@
 {
     "meta": {
         "depends_on": [],
-        "installer": "install.py"
+        "installer": "python3 install.py",
+        "uninstaller": "bash uninstall.sh"
     },
     "configuration": {
         "install_version": "3.12.3"

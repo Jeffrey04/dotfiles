@@ -6,8 +6,8 @@
             "ruby",
             "nodejs"
         ],
-        "installer": "install.py",
-        "uninstaller": "uninstall.sh",
+        "installer": "python3 install.py",
+        "uninstaller": "bash uninstall.sh",
         "is_gui": false
     },
     "config": {

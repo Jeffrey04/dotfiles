@@ -1,5 +1,11 @@
 {
     "meta": {
-        "depends_on": ["python", "ruby", "nodejs", "fish"]
+        "depends_on": [
+            "python",
+            "ruby",
+            "nodejs",
+            "fish"
+        ],
+        "installer": "bash install.sh"
     }
 }

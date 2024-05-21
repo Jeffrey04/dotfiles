@@ -3,7 +3,7 @@
         "depends_on": [
             "python"
         ],
-        "installer": "install.py"
+        "installer": "python3 install.py"
     },
     "configuration": {
         "nvm_version": "0.39.7",

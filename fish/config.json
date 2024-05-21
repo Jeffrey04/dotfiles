@@ -1,7 +1,7 @@
 {
     "meta": {
         "depends_on": [],
-        "installer": "install.py"
+        "installer": "python3 install.py"
     },
     "config": {
         "plugins": [
