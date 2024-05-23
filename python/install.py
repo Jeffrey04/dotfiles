@@ -37,5 +37,5 @@ if platform.system() == "Linux":
     subprocess.call("sudo apt install -y python-is-python3", shell=True)
 
 elif platform.system() == "Darwin":
-    # mimic python-is-python3
-    subprocess.call("ln -s /usr/bin/python3 $HOME/.local/bin/python", shell=True)
+    # mimic python-is-python3 with homebrew
+    subprocess.call("ln -s /usr/local/bin/python3 /usr/local/bin/python", shell=True)
