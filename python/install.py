@@ -31,3 +31,11 @@ elif platform.system() == "Darwin":
     subprocess.call("brew install --force pipx", shell=True)
 
 subprocess.call(["pipx", "install", "--force", "poetry"])
+
+
+if platform.system() == "Linux":
+    subprocess.call("sudo apt install -y python-is-python3", shell=True)
+
+elif platform.system() == "Darwin":
+    # mimic python-is-python3
+    subprocess.call("ln -s /usr/bin/python3 $HOME/.local/bin/python", shell=True)
