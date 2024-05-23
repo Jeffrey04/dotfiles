@@ -27,16 +27,34 @@ EOF
     echo > $HOME/.bashrc
 fi
 
+# install direnv
 if [ "$(uname)" == "Darwin" ]; then
-    # Homebrew
     brew install --force direnv
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    # Ubuntu make installation of Go Lang
     sudo apt install -y direnv
 
 fi
 
+
+# install umake
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    if command -v snap &>/dev/null; then
+        sudo snap install ubuntu-make --classic
+    fi
+
+    if command -v umake &>/dev/null; then
+        cat >> $HOME/.profile << 'EOF'
+
+# Ubuntu make installation of Ubuntu Make binary symlink
+PATH=/home/jeffrey04/.local/share/umake/bin:$PATH
+EOF
+
+    fi
+fi
+
+
+# lastly source custom environment
 cat >> $HOME/.bashrc << 'EOF'
 
 #

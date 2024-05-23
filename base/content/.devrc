@@ -7,8 +7,6 @@ if [ "$(uname)" == "Darwin" ]; then
         eval "$(/usr/local/bin/brew shellenv)"
     fi
 
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    export PATH=/home/jeffrey04/.local/share/umake/bin:$PATH
 fi
 
 #

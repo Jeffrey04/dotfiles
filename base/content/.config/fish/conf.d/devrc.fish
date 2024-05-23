@@ -2,10 +2,6 @@
 # package manager setup
 #
 switch (uname)
-    case Linux
-        # umake
-        set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/bin
-
     case Darwin
         /usr/local/bin/brew shellenv | source
 end
@@ -49,7 +45,8 @@ switch (uname)
         set -U GOROOT /home/jeffrey04/.local/share/umake/go/go-lang
         set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/go/go-lang/bin
         set -U GOPATH $HOME/.go
-        set -Ua fish_user_paths (go env GOPATH)/bin
+        #set -Ua fish_user_paths (go env GOPATH)/bin
+        echo $PATH | grep /go/bin
 end
 
 #
