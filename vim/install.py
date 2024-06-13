@@ -40,7 +40,7 @@ os.chdir(f"{os.environ['HOME']}/.config/nvim")
 subprocess.call("pyenv local 3.12.3 3.12.3", shell=True)
 subprocess.call("poetry init --name=nvim --python=^3.12 --no-interaction", shell=True)
 subprocess.call("poetry config --local virtualenvs.in-project true", shell=True)
-subprocess.call("poetry add pynvim", shell=True)
+subprocess.call("poetry add pynvim neovim", shell=True)
 subprocess.call("echo v20.12.2 > .nvmrc", shell=True)
 subprocess.call(
     "nvm use && corepack enable && yarn install && yarn add neovim && yarn install",
