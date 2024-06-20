@@ -1,12 +1,11 @@
 {
     "meta": {
         "depends_on": [
-            "python"
+            "rust"
         ],
         "installer": "python3 install.py"
     },
     "configuration": {
-        "nvm_version": "0.39.7",
-        "install_version": "20.12.2"
+        "install_version": "20.14.0"
     }
 }

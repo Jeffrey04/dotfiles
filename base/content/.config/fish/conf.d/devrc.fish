@@ -10,6 +10,21 @@ end
 # programming environment
 #
 
+# Golang
+switch (uname)
+    case Linux
+        set -U GOROOT /home/jeffrey04/.local/share/umake/go/go-lang
+        set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/go/go-lang/bin
+        set -U GOPATH $HOME/.go
+        #set -Ua fish_user_paths (go env GOPATH)/bin
+        echo $PATH | grep /go/bin
+end
+
+# node
+if command -q fnm
+    fnm env --use-on-cd | source
+end
+
 # pyenv
 if test -e $HOME/.pyenv/bin/pyenv
     set -Ux PYENV_ROOT $HOME/.pyenv
@@ -37,16 +52,6 @@ switch (uname)
         if test -e /usr/local/bin/rbenv
             status --is-interactive; and /usr/local/bin/rbenv init - fish | source
         end
-end
-
-# Golang
-switch (uname)
-    case Linux
-        set -U GOROOT /home/jeffrey04/.local/share/umake/go/go-lang
-        set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/go/go-lang/bin
-        set -U GOPATH $HOME/.go
-        #set -Ua fish_user_paths (go env GOPATH)/bin
-        echo $PATH | grep /go/bin
 end
 
 #

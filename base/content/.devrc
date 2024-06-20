@@ -13,6 +13,23 @@ fi
 # programming environment
 #
 
+# golang
+if [ "$(uname)" == "Darwin" ]; then
+    echo > /dev/null
+
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # Ubuntu make installation of Go Lang
+    PATH=/home/jeffrey04/.local/share/umake/go/go-lang/bin:$PATH
+    export GOROOT=/home/jeffrey04/.local/share/umake/go/go-lang
+    export GOPATH=$HOME/.go
+    export PATH=$PATH:$(go env GOPATH)/bin
+fi
+
+# node
+if command -v fnm &>/dev/null; then
+    eval "$(fnm env --use-on-cd)"
+fi
+
 # pyenv
 if [ -f $HOME/.pyenv/bin/pyenv ]; then
     export PYENV_ROOT="$HOME/.pyenv"
@@ -29,13 +46,6 @@ if [ -f $HOME/.cargo/bin/cargo ]; then
     . "$HOME/.cargo/env"
 fi
 
-# node
-if [ -f $HOME/.local/bin/nvm ]; then
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
-
 # ruby
 if [ "$(uname)" == "Darwin" ]; then
     if [ -f /usr/local/bin/rbenv ]; then
@@ -46,18 +56,6 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     if [ -f $HOME/.rbenv/bin/rbenv ]; then
         eval "$($HOME/.rbenv/bin/rbenv init - bash)"
     fi
-fi
-
-# golang
-if [ "$(uname)" == "Darwin" ]; then
-    echo > /dev/null
-
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    # Ubuntu make installation of Go Lang
-    PATH=/home/jeffrey04/.local/share/umake/go/go-lang/bin:$PATH
-    export GOROOT=/home/jeffrey04/.local/share/umake/go/go-lang
-    export GOPATH=$HOME/.go
-    export PATH=$PATH:$(go env GOPATH)/bin
 fi
 
 #
