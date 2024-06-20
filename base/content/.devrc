@@ -25,11 +25,6 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     export PATH=$PATH:$(go env GOPATH)/bin
 fi
 
-# node
-if command -v fnm &>/dev/null; then
-    eval "$(fnm env --use-on-cd)"
-fi
-
 # pyenv
 if [ -f $HOME/.pyenv/bin/pyenv ]; then
     export PYENV_ROOT="$HOME/.pyenv"
@@ -44,6 +39,12 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 # rust
 if [ -f $HOME/.cargo/bin/cargo ]; then
     . "$HOME/.cargo/env"
+fi
+
+# node
+if command -v fnm &>/dev/null; then
+    eval "$(fnm env --use-on-cd)"
+    export FNM_COREPACK_ENABLED=true
 fi
 
 # ruby

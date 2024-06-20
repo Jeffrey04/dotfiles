@@ -20,11 +20,6 @@ switch (uname)
         echo $PATH | grep /go/bin
 end
 
-# node
-if command -q fnm
-    fnm env --use-on-cd | source
-end
-
 # pyenv
 if test -e $HOME/.pyenv/bin/pyenv
     set -Ux PYENV_ROOT $HOME/.pyenv
@@ -39,6 +34,12 @@ set -Ux PYTHONBREAKPOINT ipdb.set_trace
 # rust
 if test -e $HOME/.cargo/bin/cargo
     set -Ua fish_user_paths $HOME/.cargo/bin
+end
+
+# node
+if command -q fnm
+    fnm env --use-on-cd | source
+    set -U FNM_COREPACK_ENABLED true
 end
 
 # ruby
