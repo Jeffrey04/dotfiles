@@ -45,6 +45,7 @@ fi
 if command -v fnm &>/dev/null; then
     eval "$(fnm env --use-on-cd)"
     export FNM_COREPACK_ENABLED=true
+    export FNM_VERSION_FILE_STRATEGY=recursive
 fi
 
 # ruby

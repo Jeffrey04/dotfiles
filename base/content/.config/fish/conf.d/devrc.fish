@@ -13,9 +13,9 @@ end
 # Golang
 switch (uname)
     case Linux
-        set -U GOROOT /home/jeffrey04/.local/share/umake/go/go-lang
+        set -Ux GOROOT /home/jeffrey04/.local/share/umake/go/go-lang
         set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/go/go-lang/bin
-        set -U GOPATH $HOME/.go
+        set -Ux GOPATH $HOME/.go
         #set -Ua fish_user_paths (go env GOPATH)/bin
         echo $PATH | grep /go/bin
 end
@@ -39,7 +39,8 @@ end
 # node
 if command -q fnm
     fnm env --use-on-cd | source
-    set -U FNM_COREPACK_ENABLED true
+    set -Ux FNM_COREPACK_ENABLED true
+    set -Ux FNM_VERSION_FILE_STRATEGY recursive
 end
 
 # ruby
