@@ -7,6 +7,9 @@ import subprocess
 with open("config.json") as f:
     config = json.load(f)
 
+with open("../node/config.json") as f:
+    node_config = json.load(f)
+
 os.makedirs(f"{os.environ['HOME']}/Applications", exist_ok=True)
 
 if platform.system() == "Linux":
@@ -41,9 +44,11 @@ subprocess.call("pyenv local 3.12.3 3.12.3", shell=True)
 subprocess.call("poetry init --name=nvim --python=^3.12 --no-interaction", shell=True)
 subprocess.call("poetry config --local virtualenvs.in-project true", shell=True)
 subprocess.call("poetry add pynvim neovim", shell=True)
-subprocess.call("echo v20.12.2 > .nvmrc", shell=True)
 subprocess.call(
-    "nvm use && corepack enable && yarn install && yarn add neovim && yarn install",
+    f"echo v{node_config['configuration']['install_version']} > .nvmrc", shell=True
+)
+subprocess.call(
+    "fnm use && corepack enable && yarn install && yarn add neovim && yarn install",
     shell=True,
 )
 subprocess.call("rbenv local 3.2.2", shell=True)
