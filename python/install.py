@@ -21,8 +21,15 @@ elif platform.system() == "Darwin":
 
 subprocess.call("curl https://pyenv.run | bash", shell=True)
 
-subprocess.call(["pyenv", "global", "system", "system"])
-subprocess.call(["pyenv", "install", "-f", config["configuration"]["install_version"]])
+subprocess.call(["$HOME/.pyenv/bin/pyenv", "global", "system", "system"])
+subprocess.call(
+    [
+        "$HOME/.pyenv/bin/pyenv",
+        "install",
+        "-f",
+        config["configuration"]["install_version"],
+    ]
+)
 
 if platform.system() == "Linux":
     subprocess.call("sudo apt install -y pipx", shell=True)
