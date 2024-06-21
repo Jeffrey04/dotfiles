@@ -32,7 +32,7 @@ if [ "$(uname)" == "Darwin" ]; then
     brew install --force direnv stow
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    sudo apt install -y direnv stow python3
+    sudo apt install -y direnv stow
 
 fi
 

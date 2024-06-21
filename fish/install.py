@@ -9,7 +9,7 @@ with open("config.json") as f:
 
 
 if platform.system() == "Linux":
-    subprocess.call("sudo apt fish", shell=True)
+    subprocess.call("sudo apt install fish", shell=True)
 
 elif platform.system() == "Darwin":
     subprocess.call("brew install --force fish", shell=True)
