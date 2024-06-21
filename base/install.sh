@@ -29,10 +29,10 @@ fi
 
 # install direnv
 if [ "$(uname)" == "Darwin" ]; then
-    brew install --force direnv
+    brew install --force direnv stow
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    sudo apt install -y direnv
+    sudo apt install -y direnv stow
 
 fi
 
