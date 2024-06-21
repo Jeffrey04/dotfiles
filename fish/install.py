@@ -30,7 +30,3 @@ for plugin in config["config"]["plugins"]:
         shell=True,
         executable=fish_path,
     )
-
-subprocess.call(
-    ["stow", "-R", f"--target={os.environ['HOME']}", "--verbose=3", "content"]
-)
