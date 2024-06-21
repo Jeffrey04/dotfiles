@@ -7,7 +7,7 @@ import subprocess
 with open("config.json") as f:
     config = json.load(f)
 
-with open("../node/config.json") as f:
+with open("../nodejs/config.json") as f:
     node_config = json.load(f)
 
 os.makedirs(f"{os.environ['HOME']}/Applications", exist_ok=True)
