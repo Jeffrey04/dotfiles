@@ -13,11 +13,12 @@ end
 # Golang
 switch (uname)
     case Linux
-        set -Ux GOROOT /home/jeffrey04/.local/share/umake/go/go-lang
-        set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/go/go-lang/bin
-        set -Ux GOPATH $HOME/.go
-        #set -Ua fish_user_paths (go env GOPATH)/bin
-        echo $PATH | grep /go/bin
+        if test -d $HOME/.local/share/umake/go
+            set -Ux GOROOT /home/jeffrey04/.local/share/umake/go/go-lang
+            set -Ua fish_user_paths /home/jeffrey04/.local/share/umake/go/go-lang/bin
+            set -Ux GOPATH $HOME/.go
+            set -Ua fish_user_paths (go env GOPATH)/bin
+        end
 end
 
 # pyenv
