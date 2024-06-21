@@ -21,13 +21,12 @@ elif platform.system() == "Darwin":
 
 subprocess.call("curl https://pyenv.run | bash", shell=True)
 
-subprocess.call(["$HOME/.pyenv/bin/pyenv", "global", "system", "system"])
+subprocess.call(["bash", "-c" "$HOME/.pyenv/bin/pyenv global system system"])
 subprocess.call(
     [
-        "$HOME/.pyenv/bin/pyenv",
-        "install",
-        "-f",
-        config["configuration"]["install_version"],
+        "bash",
+        "-c",
+        f"$HOME/.pyenv/bin/pyenv install -f {config["configuration"]["install_version"]}",
     ]
 )
 
