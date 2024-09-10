@@ -80,7 +80,7 @@ fi
 # aliases for rust applications
 if [ -f $HOME/.cargo/bin/cargo ]; then
     alias cat=$HOME/.cargo/bin/bat
-    alias dig=$HOME/.cargo/bin/dog
+    alias dig=$HOME/.cargo/bin/doge
     alias http=$HOME/.cargo/bin/xh
     alias ls=$HOME/.cargo/bin/lsd
 fi

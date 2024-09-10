@@ -8,5 +8,4 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sudo apt install -y cmake
 fi
 
-$HOME/.cargo/bin/cargo install --git https://github.com/ogham/dog dog
-$HOME/.cargo/bin/cargo install bat xh lsd zoxide starship
+$HOME/.cargo/bin/cargo install bat xh lsd zoxide starship just dns-doge
